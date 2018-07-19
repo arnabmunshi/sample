@@ -1,5 +1,4 @@
 $(function() {
-  console.log('Check');
   $('li.admin').addClass('active-page open');
   $('li.admin ul.sub-menu').show();
   $('li.admin ul.sub-menu li').addClass('animation');
