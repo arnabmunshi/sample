@@ -27,6 +27,15 @@ $(function() {
   // <link href="https://www.malot.fr/bootstrap-datetimepicker/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
   $(".date-time-picker").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
   // <script src="https://www.malot.fr/bootstrap-datetimepicker/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+  
+  $(".date-picker").datepicker({
+    orientation: "top auto",
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    todayHighlight: true,
+    orientation: "bottom auto",
+    startDate: new Date()
+  });
 
   // add employee
   $('#form_add_emp #btnSubmit').click(function(e) {
