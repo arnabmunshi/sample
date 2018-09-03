@@ -12,7 +12,7 @@ $(function() {
 
   $('.modal').on('hidden.bs.modal', function () {
     $('#form_add_emp')[0].reset();
-  })
+  });
   
   // time-picker
   // <link href="https://www.malot.fr/bootstrap-datetimepicker/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
