@@ -42,7 +42,12 @@ function fb_date_with_day ($d) {
 
 function mysql_date($d) {
   $date = new DateTime($d);
-  return $date->format('Y-m-d');
+  return $date->format('Y-m-d'); // 2018-01-23
+}
+
+function zawiastudio_date($d) {
+  $date = new DateTime($d);
+  return $date->format('m/d/Y'); // 10-23-2018
 }
 
 function fb_time ($t) {
