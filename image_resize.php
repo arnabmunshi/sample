@@ -1,6 +1,8 @@
 <?php
-function image_custome_resize($required_width, $required_height) {
-  $filename = 'download.jpg';
+image_custome_resize($required_width, $required_height, $image_file_location, $image_file_location_after_resizing);
+
+function image_custome_resize($required_width, $required_height, $filename, $newfilename) {
+  // $filename = 'download.jpg';
   list($original_width, $original_height) = getimagesize($filename);
 
   $new_height = round(($required_width/$original_width)*$original_height);
@@ -12,20 +14,20 @@ function image_custome_resize($required_width, $required_height) {
 
     imagecopyresized($thumb, $source, 0, 0, 0, 0, $required_width, $new_height, $original_width, $original_height);
 
-    imagejpeg($thumb, 'thumb2.jpg', 75);
+    imagejpeg($thumb, $newfilename, 75);
 
-    image_vertical_crop($required_width, $required_height, $new_height);
+    image_vertical_crop($required_width, $required_height, $new_height, $newfilename);
   } else if ($new_width > $required_width) {
     $thumb = imagecreatetruecolor($new_width, $required_height);
     $source = imagecreatefromjpeg($filename);
 
     imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width, $required_height, $original_width, $original_height);
 
-    imagejpeg($thumb, 'thumb2.jpg', 75);
+    imagejpeg($thumb, $newfilename, 75);
 
-    image_horizontal_crop($required_width, $required_height, $new_width);
+    image_horizontal_crop($required_width, $required_height, $new_width, $newfilename);
   } else if ($required_width == $original_width && $required_height == $original_height) {
-    $newfile = 'thumb2.jpg';
+    $newfile = $newfilename;
 
     if (!copy($filename, $newfile)) {
       echo "failed to copy";
@@ -33,9 +35,9 @@ function image_custome_resize($required_width, $required_height) {
   }
 }
 
-function image_vertical_crop($required_width, $required_height, $new_height) {
+function image_vertical_crop($required_width, $required_height, $new_height, $filename) {
   // The file
-  $filename = 'thumb2.jpg';
+  // $filename = 'thumb2.jpg';
 
   // Get new dimensions
   list($width_orig, $height_orig) = getimagesize($filename);
@@ -48,12 +50,12 @@ function image_vertical_crop($required_width, $required_height, $new_height) {
   imagecopyresized($thumb, $source, 0, 0, 0, $crop_from_y, $required_width, $required_height, $width_orig, $required_height);
 
   // Output
-  imagejpeg($thumb, 'thumb2.jpg', 75);
+  imagejpeg($thumb, $filename, 75);
 }
 
-function image_horizontal_crop($required_width, $required_height, $new_width) {
+function image_horizontal_crop($required_width, $required_height, $new_width, $filename) {
   // The file
-  $filename = 'thumb2.jpg';
+  // $filename = 'thumb2.jpg';
 
   // Get new dimensions
   list($width_orig, $height_orig) = getimagesize($filename);
@@ -66,8 +68,6 @@ function image_horizontal_crop($required_width, $required_height, $new_width) {
   imagecopyresized($thumb, $source, 0, 0, $crop_from_x, 0, $required_width, $required_height, $required_width, $height_orig);
 
   // Output
-  imagejpeg($thumb, 'thumb2.jpg', 75);
+  imagejpeg($thumb, $filename, 75);
 }
-
-image_custome_resize(690, 303);
 ?>
