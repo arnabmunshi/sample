@@ -9,4 +9,3 @@ if(mysqli_query($dbcon, $sql)) {
 } else {
   echo 'Error: '.mysqli_error($dbcon);
 }
-?>
