@@ -1,5 +1,5 @@
 <?php
-image_custome_resize($required_width, $required_height, $image_file_location, $image_file_location_after_resizing);
+// image_custome_resize($required_width, $required_height, $image_file_location, $image_file_location_after_resizing);
 
 function image_custome_resize($required_width, $required_height, $filename, $newfilename) {
   // $filename = 'download.jpg';
