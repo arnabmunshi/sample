@@ -40,6 +40,11 @@ function fb_date_with_day ($d) {
   return $date->format('l, F d, Y'); // Sunday, March 03, 2018
 }
 
+function fb_date_with_day_with_time ($d) {
+  $date = new DateTime($d);
+  return $date->format('l, F d, Y ').'at'.strtoupper($date->format(' g:i a')); // Sunday, March 03, 2018 at 3:45 PM
+}
+
 function mysql_date($d) {
   $date = new DateTime($d);
   return $date->format('Y-m-d'); // 2018-01-23
