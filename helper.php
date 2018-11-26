@@ -50,6 +50,11 @@ function mysql_date($d) {
   return $date->format('Y-m-d'); // 2018-01-23
 }
 
+function mysql_date_time($d) {
+  $date = new DateTime($d);
+  return $date->format('Y-m-d H:i:s'); // 2018-12-31 18:12:33
+}
+
 function zawiastudio_date($d) {
   $date = new DateTime($d);
   return $date->format('m/d/Y'); // 10-23-2018
