@@ -44,6 +44,8 @@ $(function() {
     var form = $('#form_add_emp');
     var submit_button = $(this);
     var redirect_url = './employees';
+    // or
+    var redirect_url = location.reload(true);
 
     var default_button_text = 'Add New Employee';
     var before_send_button_text = '<i class="fa fa-spinner fa-spin fa-fw"></i> Please Wait ...';
