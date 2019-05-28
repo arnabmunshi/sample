@@ -1,1 +1,9 @@
-This is sample git file
+git config --global user.name "arnabmunshi"
+git config --global user.email arnab47stars@gmail.com
+
+git clone https://github.com/arnabmunshi/sample.git
+
+git add text.txt
+git status
+git commit -m "first commit" text.txt
+git push -u origin master
