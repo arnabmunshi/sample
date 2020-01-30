@@ -81,6 +81,7 @@ $(function() {
             (submit_button).html(after_save_button_text);
             setTimeout(function() {
               window.location = redirect_url;
+              window.location.reload(); // redirect current url
             }, 1000);
           } else if (response.indexOf('Duplicate entry') >= 0) {
             if (response.indexOf('emp_code') >= 0) {
