@@ -100,7 +100,4 @@ function prd($array_name) {
 function number_formate($number, $decimal) {
   return number_format($number, $decimal, '.', ','); // 10000.879 - 10,000.88
 }
-
-pre_r($_POST);
-
 ?>
