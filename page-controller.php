@@ -3,6 +3,7 @@ require_once __DIR__.'/../helper/functions.php';
 
 $request_uri = $_SERVER['REQUEST_URI'];
 $server_name = $_SERVER['SERVER_NAME'];
+$client_ip = $_SERVER['REMOTE_ADDR'];
 
 $base_url = base_url();
 $base_url_length = strlen($base_url);
