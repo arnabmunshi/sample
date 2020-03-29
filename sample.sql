@@ -103,3 +103,52 @@ UPDATE
 ---------------------------------------------------------------------------------------------------
 
 
+
+DROP PROCEDURE IF EXISTS update_package_name;
+DELIMITER $$
+  CREATE PROCEDURE update_package_name (
+    IN v_package_id int,
+    IN v_package_name text,
+    IN v_package_param text,
+    IN v_destination_id int
+  )
+  BEGIN
+    DECLARE rowcount int(11);
+    DECLARE x text;
+    DECLARE md5rand text;
+
+    SET x = v_package_param;
+
+    loop_label: LOOP
+      SELECT COUNT(*) INTO rowcount
+        FROM packages
+        WHERE package_param = x AND package_id != v_package_id;
+
+      SET md5rand = MD5(RAND());
+
+      IF rowcount > 0 THEN
+        SET x = CONCAT(v_package_param, '-', md5rand);
+      ELSE
+        LEAVE loop_label;
+      END IF;
+    END LOOP;
+
+    UPDATE packages SET
+      package_name = v_package_name,
+      package_param = x,
+      destination_id = v_destination_id
+      WHERE package_id = v_package_id;
+
+    SELECT ROW_COUNT() INTO rowcount;
+
+    IF rowcount > 0 THEN
+      SELECT 'UPDATED' AS message;
+    ELSE
+      SELECT 'NO-CHANGES-OCCURRED' AS message;
+    END IF;
+  END;
+$$
+
+
+
+---------------------------------------------------------------------------------------------------
