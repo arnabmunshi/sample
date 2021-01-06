@@ -60,6 +60,8 @@ $(function() {
       url: submit_url,
       data: data,
       context: this,
+      contentType: "application/json",
+      dataType: "json",
       beforeSend: function() {
         (submit_button).attr('disabled', true).html(before_send_button_text);
       },
