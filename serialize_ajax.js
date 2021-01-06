@@ -38,11 +38,11 @@ $(function() {
   });
 
   // add employee
-  $('#form_add_emp #btnSubmit').click(function(e) {
+  $('#form_add_emp').submit(function(e) {
     e.preventDefault();
 
-    var form = $('#form_add_emp');
-    var submit_button = $(this);
+    var form = $(this);
+    var submit_button = $(this).find('#btnSubmit');
     var redirect_url = './employees';
     // or
     var redirect_url = location.reload(true);
@@ -72,6 +72,7 @@ $(function() {
       },
       success: function(response) {
         console.log('Success Message: '+response);
+        // response = JSON.parse(response);
         if (response === 'SESSION-OUT') {
           window.location = "./";
         } else {
