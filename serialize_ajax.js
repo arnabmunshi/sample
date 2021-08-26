@@ -62,6 +62,8 @@ $(function() {
       context: this,
       contentType: "application/json",
       dataType: "json",
+      cache: false, // for syncronus
+      async: false, // for syncronus
       beforeSend: function() {
         (submit_button).attr('disabled', true).html(before_send_button_text);
       },
